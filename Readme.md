@@ -44,3 +44,39 @@ You are free to use any frameworks/NuGet packages that you see fit. You should p
 Feel free to use code comments to describe your changes. You are also welcome to update this readme with any important details for us to consider.
 
 Once you have completed the exercise either ensure your repository is available publicly or contact the hiring manager to set up a private share.
+
+---
+
+## Solution Summary
+
+The refactoring follows SOLID principles across 5 staged feature branches:
+
+| Stage | Change |
+|-------|--------|
+| 1 — Data interfaces | Extracted `IRebateDataStore` / `IProductDataStore`; enabled nullable reference types |
+| 2 — Strategy pattern | `IRebateCalculator` with `CanCalculate()` + `Calculate()` — one class per incentive type |
+| 3 — Refactored service | Constructor DI (C# 12); replaced switch with `FirstOrDefault`; guard clauses |
+| 4 — Unit tests | 23 xUnit tests across all calculators and service edge cases |
+| 5 — Console runner | Interactive prompts with manual composition root in `Program.cs` |
+
+Adding a new incentive type requires only a new `IRebateCalculator` class — `RebateService` never changes.
+
+---
+
+## Usage
+
+```bash
+dotnet build
+dotnet test
+dotnet run --project Smartwyre.DeveloperTest.Runner
+```
+
+---
+
+## Coverage
+
+```powershell
+.\Scripts\ExecCoverage.ps1                      # terminal table
+.\Scripts\ExecCoverage.ps1 -Quiet               # summary only
+.\Scripts\ExecCoverage.ps1 -GenerateHtmlReport  # HTML report → TestResults\HtmlReport\index.html
+```
