@@ -71,6 +71,32 @@ dotnet test
 dotnet run --project Smartwyre.DeveloperTest.Runner
 ```
 
+The runner prompts for three inputs interactively:
+
+```
+=== Rebate Calculator ===
+
+Rebate identifier:  R001
+Product identifier: P001
+Volume:             100
+
+Result: Rebate calculation failed. Check that the rebate and product are valid.
+```
+
+```
+=== Rebate Calculator ===
+
+Rebate identifier:  R001
+Product identifier: P001
+Volume:             abc
+
+Invalid volume. Must be a number.
+```
+
+> **Note:** The data stores (`RebateDataStore`, `ProductDataStore`) are intentional stubs — they
+> return empty objects regardless of the identifier. A real implementation would query a database
+> and the calculation would succeed when a valid rebate/product pair is found.
+
 ---
 
 ## Coverage
