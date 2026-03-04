@@ -93,9 +93,41 @@ Volume:             abc
 Invalid volume. Must be a number.
 ```
 
+```
+=== Rebate Calculator ===
+
+Rebate identifier:  R001
+Product identifier: P001
+Volume:             0
+
+Result: Rebate calculation failed. Check that the rebate and product are valid.
+```
+
+```
+=== Rebate Calculator ===
+
+Rebate identifier:  R001
+Product identifier: P001
+Volume:             -50
+
+Result: Rebate calculation failed. Check that the rebate and product are valid.
+```
+
+```
+=== Rebate Calculator ===
+
+Rebate identifier:
+Product identifier:
+Volume:             100
+
+Result: Rebate calculation failed. Check that the rebate and product are valid.
+```
+
 > **Note:** The data stores (`RebateDataStore`, `ProductDataStore`) are intentional stubs — they
-> return empty objects regardless of the identifier. A real implementation would query a database
-> and the calculation would succeed when a valid rebate/product pair is found.
+> return empty objects regardless of the identifier. All valid-input paths currently result in
+> failure because the stub rebate/product have zero values that fail the `CanCalculate()` guards
+> (`Volume > 0`, `Price > 0`, `Percentage > 0`, `SupportedIncentives` flag). A real implementation
+> would query a database and succeed when a valid rebate/product pair is found.
 
 ---
 
