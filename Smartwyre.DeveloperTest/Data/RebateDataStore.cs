@@ -1,16 +1,16 @@
-﻿using Smartwyre.DeveloperTest.Types;
+using Smartwyre.DeveloperTest.Types;
 
 namespace Smartwyre.DeveloperTest.Data;
 
-public class RebateDataStore
+public class RebateDataStore : IRebateDataStore
 {
-    public Rebate GetRebate(string rebateIdentifier)
+    public Rebate? GetRebate(string rebateIdentifier)
     {
-        // Access database to retrieve account, code removed for brevity 
+        // Access database to retrieve account, code removed for brevity
         return new Rebate();
     }
 
-    public void StoreCalculationResult(Rebate account, decimal rebateAmount)
+    public void StoreCalculationResult(Rebate rebate, decimal rebateAmount)
     {
         // Update account in database, code removed for brevity
     }
