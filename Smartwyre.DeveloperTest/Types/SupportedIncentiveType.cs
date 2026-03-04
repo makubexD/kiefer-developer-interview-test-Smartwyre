@@ -1,5 +1,6 @@
 ﻿namespace Smartwyre.DeveloperTest.Types;
 
+[Flags]
 public enum SupportedIncentiveType
 {
     FixedRateRebate = 1 << 0,
