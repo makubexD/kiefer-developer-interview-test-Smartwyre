@@ -7,6 +7,11 @@ $repoRoot = Split-Path $PSScriptRoot -Parent
 $settingsFile = Join-Path $repoRoot "coverlet.runsettings"
 $resultsDir   = Join-Path $repoRoot "TestResults"
 
+# ── Clean previous results ────────────────────────────────────────────────────
+if (Test-Path $resultsDir) {
+    Remove-Item $resultsDir -Recurse -Force
+}
+
 # ── Run tests ────────────────────────────────────────────────────────────────
 Write-Host "Running tests..." -ForegroundColor Cyan
 
