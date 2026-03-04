@@ -129,6 +129,47 @@ Result: Rebate calculation failed. Check that the rebate and product are valid.
 > (`Volume > 0`, `Price > 0`, `Percentage > 0`, `SupportedIncentives` flag). A real implementation
 > would query a database and succeed when a valid rebate/product pair is found.
 
+### Happy path — seed data
+
+The data stores include hardcoded seed identifiers to demonstrate each incentive type end-to-end.
+Use `product-01` as the product identifier for all three:
+
+**FixedRateRebate** — `Price(100) × Percentage(0.10) × Volume = result`
+
+```
+=== Rebate Calculator ===
+
+Rebate identifier:  rebate-fixed-rate
+Product identifier: product-01
+Volume:             10
+
+Result: Rebate calculation succeeded and was stored.
+```
+
+**FixedCashAmount** — flat `Amount = 50` regardless of volume
+
+```
+=== Rebate Calculator ===
+
+Rebate identifier:  rebate-fixed-cash
+Product identifier: product-01
+Volume:             10
+
+Result: Rebate calculation succeeded and was stored.
+```
+
+**AmountPerUom** — `Amount(5) × Volume = result`
+
+```
+=== Rebate Calculator ===
+
+Rebate identifier:  rebate-per-uom
+Product identifier: product-01
+Volume:             20
+
+Result: Rebate calculation succeeded and was stored.
+```
+
 ---
 
 ## Coverage
